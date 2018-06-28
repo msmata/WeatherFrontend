@@ -2,9 +2,20 @@
   <h2>{{ user.username | uppercase }} Details</h2>
   <div><span>id: </span>{{user.id}}</div>
   <div>
-    <label>Username:
-      <input [(ngModel)]="user.username" placeholder="username">
+    <label>
+      Username: {{user.username}}
     </label>
   </div>
-  <button (click)="goBack()">go back</button>
+<!--  <button (click)="addLocation()">Agregar locacion</button> -->
+  <a routerLink="/addLocation/{{user.id}}">
+    Add location to {{user.username}}
+  </a>
+  <br>
+  <button (click)="goBack()">Back to user list</button>
 </div>
+<br>
+<!-- 
+<div *ngIf="showLocationSearch"> 
+  <app-location-search></app-location-search>
+</div>
+-->

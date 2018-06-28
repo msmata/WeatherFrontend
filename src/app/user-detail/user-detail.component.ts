@@ -14,12 +14,15 @@ export class UserDetailComponent implements OnInit {
 
   @Input() user: User;
 
+  showLocationSearch: boolean;
+
   constructor(private route: ActivatedRoute,
     private userService: UserService,
     private location: Location) { }
 
   ngOnInit() {
     this.getUser();
+    this.showLocationSearch = false;
   }
 
   getUser(): void {
@@ -32,4 +35,7 @@ export class UserDetailComponent implements OnInit {
     this.location.back();
   }
 
+  addLocation(): void {
+    this.showLocationSearch = true;
+  }
 }
