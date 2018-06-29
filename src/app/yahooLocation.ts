@@ -27,7 +27,7 @@ class Place {
     }
 
     export class Results {
-        place: Place;
+        place: Place[];
     }
 
     export class Query {

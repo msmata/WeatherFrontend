@@ -4,8 +4,14 @@
         Location: 
       </label>
       <input id="search" [(ngModel)]="locacion" placeholder="search location">
-      <div *ngIf="locationName">
-        <h2>La ubicacion encontrada es: {{locationName}} - {{locationWoeid}} - {{locationCountry}}</h2>
+      <div *ngIf="places">
+        <li *ngFor="let place of places">
+          <span>
+            <h3>{{place.name}} - {{place.country.content}}</h3>
+            <button (click)="saveLocation(place.woeid, userId)">Asociar locacion</button>
+          </span>
+        </li>
+        <!--<h2>La ubicacion encontrada es: {{locationName}} - {{locationWoeid}} - {{locationCountry}}</h2> -->
       </div>
     </div>
     <button (click)="searchLocation()">Search location</button>
