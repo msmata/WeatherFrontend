@@ -16,6 +16,7 @@ export class LocationSearchComponent implements OnInit {
   yahooLocation: YahooLocation;
   locationName: string;
   locationWoeid: string;
+  locationCountry: string;
 
   constructor(private location: Location, private locationService: LocationService) { }
 
@@ -30,7 +31,8 @@ export class LocationSearchComponent implements OnInit {
 
     this.locationService.searchLocation(this.locacion).subscribe(yahooResponse => {console.log(yahooResponse.query);
                                                                                     this.locationName = yahooResponse.query.results.place.name;
-                                                                                    this.locationWoeid = yahooResponse.query.results.place.woeid});
+                                                                                    this.locationWoeid = yahooResponse.query.results.place.woeid
+                                                                                    this.locationCountry = yahooResponse.query.results.place.country.content});
 
     //alert(response.query.results.admin1.content);
     //console.log(this.locationName);

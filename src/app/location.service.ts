@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class LocationService {
 
-  private yahooLocationQuery = 'select name, woeid from geo.places(1) where text="';
+  private yahooLocationQuery = 'select name, woeid, country from geo.places(1) where text="';
   private yahooAPIUrl = 'https://query.yahooapis.com/v1/public/yql';
 
 

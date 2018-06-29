@@ -3,7 +3,10 @@
       <label for="search">
         Location: 
       </label>
-      <input id="search" [(ngModel)]="locacion" placeholder="search location"><h2>La ubicacion encontrada es: {{locationName}} - {{locationWoeid}}</h2>
+      <input id="search" [(ngModel)]="locacion" placeholder="search location">
+      <div *ngIf="locationName">
+        <h2>La ubicacion encontrada es: {{locationName}} - {{locationWoeid}} - {{locationCountry}}</h2>
+      </div>
     </div>
     <button (click)="searchLocation()">Search location</button>
     <button (click)="goBack()">Back to user list</button>

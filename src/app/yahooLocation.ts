@@ -13,8 +13,16 @@ class Place {
 */
 //declare module namespace {
 
+    export class Country {
+        code: string;
+        type: string;
+        woeid: string;
+        content: string;
+    }
+
     export class Place {
         name: string;
+        country: Country;
         woeid: string;
     }
 
