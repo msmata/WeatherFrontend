@@ -1,4 +1,5 @@
 export class Locacion {
-    searchedLocation: string;
+    name: string;
     woeid: number;
+    id: number;
 }

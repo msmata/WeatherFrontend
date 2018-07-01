@@ -1,18 +1,3 @@
-/*
-export class YahooLocation {
-    count: string;
-    created: string;
-    lang: string;
-    results: Place[];
-}
-
-class Place {
-    name: string;
-    woeid: string;
-}
-*/
-//declare module namespace {
-
     export class Country {
         code: string;
         type: string;
@@ -41,5 +26,4 @@ class Place {
         query: Query;
     }
 
-//}
 
