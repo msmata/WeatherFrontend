@@ -35,4 +35,9 @@ export class UserService {
     user.locations.push(locacion);
     this.http.put<User>(this.userApi + user.id, user).subscribe(response => console.log(response.username));
   }
+
+  removeLocationToUser(user: User, woeid: number) {
+    user.locations = user.locations.filter(item => item.woeid !== woeid);
+    this.http.put<User>(this.userApi + user.id, user).subscribe(response => console.log(response.username));
+  }
 }

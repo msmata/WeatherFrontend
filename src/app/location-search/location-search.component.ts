@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute/*, Router*/ } from '@angular/router';
 
 import { LocationService } from '../location.service';
 import { YahooLocation, Place } from '../yahooLocation';
@@ -20,7 +20,11 @@ export class LocationSearchComponent implements OnInit {
   places: Place[];
   userId: number;
 
-  constructor(private location: Location, private locationService: LocationService, private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private location: Location, 
+              private locationService: LocationService, 
+              private userService: UserService, 
+              private route: ActivatedRoute/*,
+  private router: Router*/) { }
 
   ngOnInit() {
     this.userId = +this.route.snapshot.paramMap.get('userId');
@@ -33,6 +37,8 @@ export class LocationSearchComponent implements OnInit {
   saveLocation(woeid, place, userId): void{
     if (confirm('Asocio ' + woeid + ' con el user ' + userId)){
       this.userService.updateUser(userId, woeid, place);
+      this.location.back();
+      //this.router.navigateByUrl('/detail/' + this.userId);
     }
   }
 

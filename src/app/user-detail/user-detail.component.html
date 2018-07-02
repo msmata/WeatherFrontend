@@ -1,12 +1,19 @@
 <div *ngIf="user">
   <h2>{{ user.username | uppercase }} Details</h2>
-  <div><span>id: </span>{{user.id}}</div>
   <div>
     <label>
       Username: {{user.username}}
     </label>
   </div>
-<!--  <button (click)="addLocation()">Agregar locacion</button> -->
+  <div *ngIf="conditions.length > 0">
+    <li *ngFor="let cond of conditions">
+      <h3>{{cond.query.location}}</h3>
+      <h3>{{cond.query.results.channel.item.condition.date}}</h3>
+      <h3>Temperatura: {{cond.query.results.channel.item.condition.temp}} F°</h3>
+      <h3>{{cond.query.results.channel.item.condition.text}}</h3>
+      <button (click)="removeLocation(cond.query.woeid)">Remove location</button>
+    </li>
+  </div>
   <a routerLink="/addLocation/{{user.id}}">
     Add location to {{user.username}}
   </a>
@@ -14,8 +21,4 @@
   <button (click)="goBack()">Back to user list</button>
 </div>
 <br>
-<!-- 
-<div *ngIf="showLocationSearch"> 
-  <app-location-search></app-location-search>
-</div>
--->
+
