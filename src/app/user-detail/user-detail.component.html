@@ -1,11 +1,31 @@
-<div *ngIf="user">
-  <h2>{{ user.username | uppercase }} Details</h2>
+<div *ngIf="user" class="container">
   <div>
     <label>
       Username: {{user.username}}
     </label>
   </div>
   <div *ngIf="conditions.length > 0">
+  <table class="table table-dark">
+      <thead>
+          <tr>
+              <td>Location</td>
+              <td>Date</td>
+              <td>Temp (F°)</td>
+              <td>Condition</td>
+              <td></td>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let cond of conditions">
+              <td>{{cond.query.location}}</td>
+              <td>{{cond.query.results.channel.item.condition.date}}</td>
+              <td>{{cond.query.results.channel.item.condition.temp}} F°</td>
+              <td>{{cond.query.results.channel.item.condition.text}}</td>
+              <td><button (click)="removeLocation(cond.query.woeid)" class="btn btn-danger">Remove location</button></td>
+          </tr>
+      </tbody>
+  </table>
+  <!--
     <li *ngFor="let cond of conditions">
       <h3>{{cond.query.location}}</h3>
       <h3>{{cond.query.results.channel.item.condition.date}}</h3>
@@ -13,12 +33,13 @@
       <h3>{{cond.query.results.channel.item.condition.text}}</h3>
       <button (click)="removeLocation(cond.query.woeid)">Remove location</button>
     </li>
+  -->
   </div>
-  <a routerLink="/addLocation/{{user.id}}">
+  <a class="btn btn-info" routerLink="/addLocation/{{user.id}}">
     Add location to {{user.username}}
   </a>
-  <br>
-  <button (click)="goBack()">Back to user list</button>
+  <br />
+  <button (click)="goBack()" class="btn btn-success">Back to user list</button>
 </div>
 <br>
 
