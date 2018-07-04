@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { User } from '../user';
@@ -20,7 +20,7 @@ export class UserDetailComponent implements OnInit {
 
   conditions: Array<YahooCondition>;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute, private router: Router,
     private userService: UserService,
     private location: Location, private locationService: LocationService) { }
 
@@ -47,8 +47,10 @@ export class UserDetailComponent implements OnInit {
     
     if (confirm('Remuevo ' + woeid + ' de usuario ' + this.user.id)){
       this.userService.removeLocationToUser(this.user, woeid);
+      this.user.locations = this.user.locations.filter(loc => loc.woeid !== woeid);
     }
   
+    this.ngOnInit();
   }
 
   goBack(): void {
