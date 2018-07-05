@@ -7,19 +7,21 @@
       <button (click)="searchLocation()">Search location</button>
       <button (click)="goBack()">Back to user detail</button>
       <div *ngIf="places">
-        <h3>{{places.length}}</h3>
         <div *ngIf="places.length > 1">
-        <li *ngFor="let place of places">
-          <span>
-            <h3>{{place.name}} - {{place.country.content}}</h3>
-            <button (click)="saveLocation(place.woeid, place.name, userId)">Asociar locacion</button>
-          </span>
-        </li>
-        </div>
-        <div *ngIf="places.length > 0">
-            <h3>{{places[0].name}} - {{places[0].country.content}}</h3>
-             <button (click)="saveLocation(places[0].woeid, places[0].name, userId)">Asociar locacion</button>
-          </div>
+          <table class="table table-dark">
+            <thead>
+              <tr>Place</tr>
+              <tr>Country</tr>
+              <tr></tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let place of places">
+                <td>{{place.name}}</td>
+                <td>{{place.country.content}}</td>
+                <td><button (click)="saveLocation(place.woeid, place.name, userId)">Asociate location</button></td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>
