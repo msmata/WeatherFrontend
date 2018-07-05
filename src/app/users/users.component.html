@@ -1,10 +1,24 @@
 <div class="container">
   <h2>Users</h2>
-  <ul class="users">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Username</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td><a routerLink="/detail/{{user.id}}">{{user.username}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+<!--  <ul class="users">
     <li *ngFor="let user of users">
       <a routerLink="/detail/{{user.id}}">
         <span class="badge">{{user.id}}</span> {{user.username}}
       </a>
     </li>
-  </ul>
+  </ul> -->
 </div>
