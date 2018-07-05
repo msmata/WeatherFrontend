@@ -33,9 +33,9 @@ export class LocationSearchComponent implements OnInit {
     this.location.back();
   }
 
-  saveLocation(woeid, place, userId): void{
-    if (confirm('Asocio ' + woeid + ' con el user ' + userId)){
-      this.userService.updateUser(userId, woeid, place);
+  saveLocation(place: Place, userId): void{
+    if (confirm('Asocio ' + place.name + ' con el user ' + userId)){
+      this.userService.updateUser(userId, place.woeid, place.name);
       this.location.back();
     }
   }

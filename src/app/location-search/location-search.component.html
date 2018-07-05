@@ -18,7 +18,7 @@
               <tr *ngFor="let place of places">
                 <td>{{place.name}}</td>
                 <td>{{place.country.content}}</td>
-                <td><button (click)="saveLocation(place.woeid, place.name, userId)">Asociate location</button></td>
+                <td><button (click)="saveLocation(place, userId)">Asociate location</button></td>
               </tr>
             </tbody>
           </table>
